@@ -5,7 +5,7 @@
     "lib": ["ES6"],
     "allowJs": true,
     "checkJs": true,
-    "outDir": "./dist",
+    "outDir": "./build",
     "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,

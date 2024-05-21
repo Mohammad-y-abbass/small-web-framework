@@ -11,3 +11,16 @@ console.log(component.get());
 component.set({ name: 'Jane' });
 console.log(component.get());
 
+component.on('click', () => {
+  console.log('clicked');
+});
+
+component.on('click', () => {
+  console.log('clicked again');
+});
+
+component.on('change', () => {
+  console.log('changed');
+});
+
+console.log(component.events);
