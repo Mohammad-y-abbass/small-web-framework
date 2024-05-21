@@ -1,4 +1,4 @@
-export async function getData<T>(url: string): Promise<T> {
+export async function GET<T>(url: string): Promise<T> {
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -16,7 +16,7 @@ export async function getData<T>(url: string): Promise<T> {
   }
 }
 
-export async function postData<T, U>(url: string, data: T): Promise<U> {
+export async function POST<T, U>(url: string, data: T): Promise<U> {
   try {
     const response = await fetch(url, {
       method: 'POST',
@@ -40,7 +40,7 @@ export async function postData<T, U>(url: string, data: T): Promise<U> {
   }
 }
 
-export async function putData<T, U>(url: string, data: T): Promise<U> {
+export async function UPDATE<T, U>(url: string, data: T): Promise<U> {
   try {
     const response = await fetch(url, {
       method: 'PUT',

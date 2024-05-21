@@ -1,14 +1,18 @@
 import { Callback, Events } from '../types';
 
-export class Component<T> {
+export class Component<Props> {
+  props!: Props;
   events: Events = {};
-  constructor(private props: T) {}
 
-  get(): T {
+  constructor(private parent: Element, private template: string) {
+    this.props = {} as Props;
+  }
+
+  get(): Props {
     return this.props;
   }
 
-  set(props: T) {
+  set(props: Props) {
     this.props = { ...this.props, ...props };
   }
 
@@ -26,5 +30,11 @@ export class Component<T> {
     } else {
       console.error(`event "${event}" does not exist`);
     }
+  }
+
+  render(): void {
+    const template = document.createElement('template');
+    template.innerHTML = this.template;
+    this.parent.append(template.content);
   }
 }
