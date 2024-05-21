@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES6",
     "module": "ES6",
-    "lib": ["ES6"],
+    "lib": ["ES6","DOM"],
     "allowJs": true,
     "checkJs": true,
     "outDir": "./build",

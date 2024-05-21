@@ -1,4 +1,5 @@
 import { Component } from './models/Component.js';
+import { getData } from './core/requestHandler.js';
 
 interface Props {
   name?: string;
@@ -12,17 +13,9 @@ component.set({ name: 'Jane' });
 console.log(component.get());
 
 component.on('click', () => {
-  console.log('clicked');
+  getData('http://localhost:3000/users');
 });
 
-component.on('click', () => {
-  console.log('clicked again');
-});
-
-component.on('change', () => {
-  console.log('changed');
-});
-
-component.trigger('save');
+component.trigger('click');
 
 console.log(component.events);
