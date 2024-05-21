@@ -40,3 +40,26 @@ export async function postData<T, U>(url: string, data: T): Promise<U> {
   }
 }
 
+export async function putData<T, U>(url: string, data: T): Promise<U> {
+  try {
+    const response = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const responseData: U = await response.json();
+    console.log('request succeeded');
+    return responseData;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(`Updating data failed: ${error.message}`);
+    } else {
+      throw new Error(`An unknown error occurred: ${error}`);
+    }
+  }
+}
