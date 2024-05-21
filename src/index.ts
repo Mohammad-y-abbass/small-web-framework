@@ -23,4 +23,6 @@ component.on('change', () => {
   console.log('changed');
 });
 
+component.trigger('save');
+
 console.log(component.events);

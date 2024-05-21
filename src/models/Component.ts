@@ -19,4 +19,12 @@ export class Component<T> {
       this.events[event] = [callback];
     }
   }
+
+  trigger(event: string) {
+    if (this.events[event]) {
+      this.events[event].forEach((callback) => callback());
+    } else {
+      console.error(`event "${event}" does not exist`);
+    }
+  }
 }
