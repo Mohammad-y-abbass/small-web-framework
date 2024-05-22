@@ -6,6 +6,7 @@ export class Component<Props> {
 
   constructor(private parent: Element, private template: string) {
     this.props = {} as Props;
+    this.render();
   }
 
   get(): Props {
@@ -33,8 +34,21 @@ export class Component<Props> {
   }
 
   render(): void {
-    const template = document.createElement('template');
-    template.innerHTML = this.template;
-    this.parent.append(template.content);
+    this.parent.innerHTML = this.template;
+  }
+
+  bindEvent(selector: string, event: string, callback: EventListener): void {
+    this.parent.addEventListener(event, (e) => {
+      if (e.target && (e.target as Element).matches(selector)) {
+        callback(e);
+      }
+    });
+  }
+
+  rerender(template: string) {
+    if (this.template !== template) {
+      this.template = template;
+      this.render();
+    }
   }
 }
